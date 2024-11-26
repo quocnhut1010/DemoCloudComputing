@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "241833068563",
+    "project_id": "democloudcomputing-7e453",
+    "storage_bucket": "democloudcomputing-7e453.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241833068563:android:dfb8cf4f2765f66415d7e6",
+        "android_client_info": {
+          "package_name": "vn.edu.tdmu.democloudcomputing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTmblQye6_hm11yO9NrmHvny2NlhkKx7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
