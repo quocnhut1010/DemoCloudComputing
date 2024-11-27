@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +29,7 @@ public class ProfileActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.profile_activity);
 
         // Ánh xạ các TextView
         titleName = findViewById(R.id.titleName);
@@ -39,8 +40,8 @@ public class ProfileActivity extends Activity {
         profilePassword = findViewById(R.id.profilePassword);
         btnExit = findViewById(R.id.exitButton);
 
-        // Lấy username từ Intent
-        String userUsername = getIntent().getStringExtra("username");
+        // Lấy id_user từ Intent
+        String id_user = getIntent().getStringExtra("id_user");
 
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,44 +75,41 @@ public class ProfileActivity extends Activity {
             }
         });
 
-        if (userUsername != null) {
-            // Truy vấn Firebase để lấy thông tin người dùng
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-            Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
+        if (id_user != null) {
+            // Truy vấn Firebase để lấy thông tin người dùng dựa vào id_user
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users").child(id_user);
 
-            checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@Nullable DataSnapshot snapshot) {
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
                         // Lấy dữ liệu từ snapshot
-                        for (DataSnapshot userSnapshot : snapshot.getChildren()) {
-                            String name = userSnapshot.child("name").getValue(String.class);
-                            String email = userSnapshot.child("email").getValue(String.class);
-                            String username = userSnapshot.child("username").getValue(String.class);
-                            String password = userSnapshot.child("password").getValue(String.class);
+                        String name = snapshot.child("name").getValue(String.class);
+                        String email = snapshot.child("email").getValue(String.class);
+                        String username = snapshot.child("username").getValue(String.class);
+                        String password = snapshot.child("password").getValue(String.class);
 
-                            // Hiển thị dữ liệu lên TextView
-                            titleName.setText(name);
-                            titleUsername.setText(username);
-                            profileName.setText(name);
-                            profileEmail.setText(email);
-                            profileUsername.setText(username);
-                            profilePassword.setText(password);
-                        }
+                        // Hiển thị dữ liệu lên TextView
+                        titleName.setText(name);
+                        titleUsername.setText(username);
+                        profileName.setText(name);
+                        profileEmail.setText(email);
+                        profileUsername.setText(username);
+                        profilePassword.setText(password);
                     } else {
-                        // Xử lý nếu username không tồn tại
+                        // Xử lý nếu id_user không tồn tại
                         Toast.makeText(ProfileActivity.this, "User not found!", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
-                public void onCancelled(@Nullable DatabaseError error) {
+                public void onCancelled(@NonNull DatabaseError error) {
                     // Xử lý lỗi
                     Toast.makeText(ProfileActivity.this, "Failed to fetch data!", Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            Toast.makeText(this, "No username passed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No user ID passed!", Toast.LENGTH_SHORT).show();
         }
     }
     private void logout() {

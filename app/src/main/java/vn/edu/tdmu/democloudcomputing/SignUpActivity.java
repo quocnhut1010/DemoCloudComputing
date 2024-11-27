@@ -89,22 +89,19 @@ public class SignUpActivity extends AppCompatActivity {
                 database = FirebaseDatabase.getInstance();
                 reference = database.getReference("users");
 
-                // Kiểm tra username trùng lặp trước khi lưu
-                reference.child(username).get().addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult().exists()) {
-                        signupUsername.setError("Username already exists");
-                        signupUsername.requestFocus();
+                // Tạo ID tự động với push()
+                String id_user = reference.push().getKey();
+
+                // Lưu thông tin người dùng kèm theo id_user
+                HelperClass helperClass = new HelperClass(id_user, name, email, username, password);
+                reference.child(id_user).setValue(helperClass).addOnCompleteListener(setTask -> {
+                    if (setTask.isSuccessful()) {
+                        Toast.makeText(SignUpActivity.this, "You have signed up successfully!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                        intent.putExtra("id_user", id_user); // Truyền id_user sang LoginActivity
+                        startActivity(intent);
                     } else {
-                        HelperClass helperClass = new HelperClass(name, email, username, password);
-                        reference.child(username).setValue(helperClass).addOnCompleteListener(setTask -> {
-                            if (setTask.isSuccessful()) {
-                                Toast.makeText(SignUpActivity.this, "You have signed up successfully!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(SignUpActivity.this, "Sign-up failed. Please try again.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        Toast.makeText(SignUpActivity.this, "Sign-up failed. Please try again.", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
