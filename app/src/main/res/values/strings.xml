@@ -1,3 +1,8 @@
 <resources>
+    <string-array name="note_types">
+        <item>Học tập</item>
+        <item>Công việc</item>
+        <item>Thể thao</item>
+    </string-array>
     <string name="app_name">DemoCloudComputing</string>
 </resources>

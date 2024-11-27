@@ -1,0 +1,138 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EBD6CE"
+    android:padding="16dp">
+
+    <!-- Thanh năm và tháng hiện tại -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <!-- Nút mũi tên trái -->
+        <ImageButton
+            android:id="@+id/btnPrevMonth"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_left"
+            android:background="@null"
+            android:scaleType="centerInside"/>
+
+        <!-- Năm và tháng hiện tại -->
+        <TextView
+            android:id="@+id/tvMonthYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2024 tháng 11"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:paddingHorizontal="16dp" />
+
+        <!-- Nút mũi tên phải -->
+        <ImageButton
+            android:id="@+id/btnNextMonth"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_right"
+            android:background="@null"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
+    <!-- Nút quay về hôm nay -->
+    <Button
+        android:id="@+id/btnToday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Quay về hôm nay"
+        android:textSize="14sp"
+        android:backgroundTint="#8AC7FF"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Danh sách lịch (Calendar grid) -->
+    <GridLayout
+        android:id="@+id/gridCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="7"
+        android:padding="8dp"
+        android:rowCount="6">
+
+    </GridLayout>
+
+    <!-- Text "Lịch làm việc" -->
+    <TextView
+        android:id="@+id/tvScheduleTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lịch làm việc"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Thanh các nút chọn danh mục -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnAll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#8AC7FF"
+            android:text="Tất cả"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnStudy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Học tập"
+            android:backgroundTint="#8AC7FF"
+            android:textColor="#FFFFFF"
+            android:layout_marginHorizontal="4dp" />
+
+        <Button
+            android:id="@+id/btnSport"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Thể thao"
+            android:backgroundTint="#8AC7FF"
+            android:textColor="#FFFFFF"
+            android:layout_marginHorizontal="4dp" />
+
+        <Button
+            android:id="@+id/btnWork"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Công việc"
+            android:backgroundTint="#8AC7FF"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- Danh sách mục tương ứng -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
