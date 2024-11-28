@@ -78,7 +78,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:entries="@array/note_types"
                 android:background="@drawable/rounded_spinner" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
