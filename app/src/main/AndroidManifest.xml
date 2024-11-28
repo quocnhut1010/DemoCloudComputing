@@ -13,7 +13,7 @@
         android:theme="@style/Theme.DemoCloudComputing"
         tools:targetApi="31">
         <activity
-            android:name=".Add_work"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,13 +25,16 @@
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity">
+            android:name=".Add_work">
         </activity>
         <activity
             android:name=".ProfileActivity">
         </activity>
         <activity
             android:name=".Home">
+        </activity>
+        <activity
+            android:name=".MainActivity">
         </activity>
     </application>
 

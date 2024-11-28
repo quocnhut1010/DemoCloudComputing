@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5">
@@ -47,16 +48,18 @@
     </androidx.cardview.widget.CardView>
 
     <!-- CardView: Loại ghi chú -->
+
+    <!-- CardView: Đặt thời gian báo -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_note_type"
+        android:id="@+id/card_task_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#FFFFFF"
         app:cardCornerRadius="8dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_title">
 
         <LinearLayout
@@ -66,23 +69,28 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/tv_note_label"
+                android:id="@+id/tv_task_content_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chọn loại ghi chú:"
-                android:textSize="16sp"
-                android:textColor="#333333" />
+                android:text="Nội dung cần làm:"
+                android:textColor="#333333"
+                android:textSize="16sp" />
 
-            <Spinner
-                android:id="@+id/spinner_note_type"
+            <EditText
+                android:id="@+id/et_task_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/rounded_spinner" />
+                android:background="@drawable/rounded_edittext"
+                android:gravity="start|top"
+                android:hint="Nhập nội dung cần làm"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- CardView: Đặt thời gian báo -->
     <androidx.cardview.widget.CardView
         android:id="@+id/card_time"
         android:layout_width="0dp"
@@ -93,7 +101,7 @@
         app:cardCornerRadius="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_note_type">
+        app:layout_constraintTop_toBottomOf="@id/card_task_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -121,16 +129,17 @@
     </androidx.cardview.widget.CardView>
 
     <!-- CardView: Nội dung cần làm -->
+
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_task_content"
+        android:id="@+id/card_note_type"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#FFFFFF"
         app:cardCornerRadius="8dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_time">
 
         <LinearLayout
@@ -140,25 +149,45 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/tv_task_content_label"
+                android:id="@+id/tv_note_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nội dung cần làm:"
-                android:textSize="16sp"
-                android:textColor="#333333" />
+                android:text="Tình trạng"
+                android:textColor="#333333"
+                android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/et_task_content"
+            <Spinner
+                android:id="@+id/spinner_note_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="Nhập nội dung cần làm"
-                android:background="@drawable/rounded_edittext"
-                android:gravity="start|top"
-                android:minHeight="100dp"
-                android:padding="10dp"
-                android:textColor="#000000"
-                android:textColorHint="#AAAAAA" />
+                android:background="@drawable/rounded_spinner" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Add" />
+
+                <Button
+                    android:id="@+id/btnClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Clear" />
+            </LinearLayout>
+
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

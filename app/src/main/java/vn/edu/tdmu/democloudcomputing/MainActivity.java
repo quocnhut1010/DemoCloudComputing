@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         if (btnAdd != null) {
             btnAdd.setOnClickListener(v -> {
                 Toast.makeText(getApplicationContext(), "Thêm Ghi Chu", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(MainActivity.this, Add_work.class);
                 intent.putExtra("id_user", id_user);  // Đảm bảo rằng userId là giá trị chính xác
                 startActivity(intent);
                 bottomSheetDialog.dismiss();

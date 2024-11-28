@@ -6,4 +6,6 @@
     <color name="purple">#800080</color>
     <color name="lavender">#8692f7</color>
     <color name="red">#F0190B</color>
+    <color name="green">#4CAF50</color> <!-- Màu xanh lá -->
+    <color name="blue">#2196F3</color>  <!-- Màu xanh dương -->
 </resources>
