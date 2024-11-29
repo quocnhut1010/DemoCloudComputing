@@ -33,7 +33,7 @@
                     android:id="@+id/greetingText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chào buổi tối,"
+                    android:text="Xin chào, "
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
