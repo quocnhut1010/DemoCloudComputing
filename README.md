@@ -17,3 +17,4 @@ Yêu cầu môi trường
 🧰 Android Studio phiên bản mới nhất.  
 ☕ JDK 8 hoặc cao hơn.  
 🌐 Kết nối Internet.  
+✍️ Tác Giả  : quocnhut1010  
